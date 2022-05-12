@@ -1,6 +1,16 @@
 from flask import Flask, render_template
 app = Flask (__name__)
 
+pitches = [
+    {
+        'author': "Jane Andy",
+        'title': "Pitch Post 1",
+        'content': "First pitch Content",
+        'date_posted':"April 13th, 2022"
+    }
+]
+
+
 @app.route("/")
 @app.route("/home")
 def name():
