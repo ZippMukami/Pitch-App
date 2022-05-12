@@ -7,6 +7,12 @@ pitches = [
         'title': "Pitch Post 1",
         'content': "First pitch Content",
         'date_posted':"April 13th, 2022"
+    }, 
+    {
+        'author': "Laurel Md",
+        'title': "Pitch Post 2",
+        'content': "Second pitch Content",
+        'date_posted':"January 2nd, 2022"
     }
 ]
 
