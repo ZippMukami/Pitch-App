@@ -1,13 +1,20 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> </title>
-    </head>
-    <body>
-        <h1>Home Page</h1>
+
+<head>
+    <title> </title>
+</head>
+
+<body>
+    {% for pitch in pitches %}
+      <h1>{{ pitch.title }}</h1>
+      <p>By {{ pitch.author}} on {{pitch.date_posted}}</p>
+      <p>{{ pitch.content }}</p>
+
+    {% endfor %}
 
 
 
+</body>
 
-    </body>
 </html>
