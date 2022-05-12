@@ -1,13 +1,19 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> </title>
-    </head>
-    <body>
-        <h1>About Page</h1>
+
+<head>
+    {% if title %}
+    <title>Pitch App - {{ title }}</title>
+    {% else %}
+    <title> Pitch App</title>
+    {% endif %} </head>
+
+<body>
+    <h1>About Page</h1>
 
 
 
 
-    </body>
+</body>
+
 </html>
