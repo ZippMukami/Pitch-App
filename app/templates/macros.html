@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {% if title %}
+    <title>Pitch App - {{ title }}</title>
+    {% else %}
+    <title> Pitch App</title>
+    {% endif %} </head>
+
+<body>
+{% block content %}{% endblock %}
+</body>
+
+</html>

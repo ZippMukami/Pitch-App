@@ -1,19 +1,8 @@
-<!DOCTYPE html>
-<html>
+{% extends "macros.html" %}
+{% block content %}
+    {% for pitch in pitches %}
+      <h1>About Page</h1>
 
-<head>
-    {% if title %}
-    <title>Pitch App - {{ title }}</title>
-    {% else %}
-    <title> Pitch App</title>
-    {% endif %} </head>
+    {% endfor %}
 
-<body>
-    <h1>About Page</h1>
-
-
-
-
-</body>
-
-</html>
+{% endblock content %}

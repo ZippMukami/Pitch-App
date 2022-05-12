@@ -1,15 +1,5 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    {% if title %}
-    <title>Pitch App - {{ title }}</title>
-    {% else %}
-    <title> Pitch App</title>
-    {% endif %}
-</head>
-
-<body>
+{% extends "macros.html" %}
+{% block content %}
     {% for pitch in pitches %}
       <h1>{{ pitch.title }}</h1>
       <p>By {{ pitch.author}} on {{pitch.date_posted}}</p>
@@ -17,8 +7,4 @@
 
     {% endfor %}
 
-
-
-</body>
-
-</html>
+{% endblock content %}
