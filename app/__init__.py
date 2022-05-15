@@ -4,6 +4,9 @@ from email.policy import default
 from turtle import title
 from flask import Flask, render_template, url_for, flash, redirect
 from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField
+from wtforms.validators import DataRequired
 from forms import RegistrationForm, LoginForm
 
 app = Flask (__name__)
@@ -28,7 +31,7 @@ class Pitch(db.Model):
     title = db.Column(db.String(100),nullable = False)
     date_posted = db.Column(db.DateTime, nullable = False, default = datetime.utcnow)
     content = db.Column(db.Text, nullable = False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = false)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
 
     def __repr__(self):
         return f"Pitch('{self.title}', '{self.date_posted}')"
