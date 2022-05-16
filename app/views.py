@@ -114,7 +114,7 @@ def update_pitch(pitch_id):
     if pitch.author != current_user:
         abort(403)
     form = PitchForm()   
-    if form.validate_on_submit():
+    if form.validate_on_submit(): 
         pitch.title = form.title.data
         pitch.content = form.content.data
         db.session.commit()
