@@ -4,7 +4,7 @@ from turtle import title
 from PIL import Image
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PitchForm
 from app.models import User, Pitch
 from flask_login import login_user, current_user, logout_user, login_required
 
@@ -106,7 +106,11 @@ def account():
     return render_template('account.html', title ='Account', image_file = image_file, form=form)    
 
 
-@app.route("/pitch/new")
+@app.route("/pitch/new", methods= ['GET', 'POST'])
 @login_required
 def new_pitch():
-    return render_template('create_pitch.html', title='New Pitch')    
+    form = PitchForm()
+    if form.validate_on_submit():
+        flash('Your pitch has been created', 'success')
+        return redirect(url_for('home'))
+    return render_template('create_pitch.html', title='New Pitch', form=form)    
