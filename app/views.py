@@ -2,7 +2,7 @@ import os
 import secrets
 from turtle import title
 from PIL import Image
-from flask import render_template, url_for, flash, redirect, request
+from flask import abort, render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PitchForm
 from app.models import User, Pitch
@@ -100,9 +100,29 @@ def new_pitch():
         db.session.commit()
         flash('Your pitch has been created', 'success')
         return redirect(url_for('home'))
-    return render_template('create_pitch.html', title='New Pitch', form=form)    
+    return render_template('create_pitch.html', title='New Pitch', form=form, legend = 'New Pitch')    
 
 @app.route("/pitch/<int:pitch_id>" )
 def pitch(pitch_id):
     pitch = Pitch.query.get_or_404(pitch_id)
     return render_template('pitch.html', title = pitch.title, pitch =pitch)
+
+@app.route("/pitch/<int:pitch_id>/update" )
+@login_required
+def update_pitch(pitch_id):
+    pitch = Pitch.query.get_or_404(pitch_id)
+    if pitch.author != current_user:
+        abort(403)
+
+    form = PitchForm()   
+    if form.validate_on_submit():
+        pitch.title = form.title.data
+        pitch.content = form.content.data
+        db.session.commit()
+        flash('Your pitch has been updated', 'success')
+        return redirect(url_for('pitch', pitch_id))
+    elif request.method == 'GET':
+        form.title.data = pitch.title
+        form.content.data = pitch.content
+
+    return render_template('create_pitch.html', title='Update Pitch', form=form, legend = 'Update Pitch')    
