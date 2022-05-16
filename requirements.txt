@@ -18,6 +18,7 @@ entrypoints==0.3
 fasteners==0.14.1
 Flask==2.1.2
 Flask-Bcrypt==1.0.1
+Flask-Login==0.6.1
 future==0.18.2
 gunicorn==20.1.0
 httplib2==0.14.0
@@ -40,6 +41,7 @@ netifaces==0.10.4
 oauthlib==3.1.0
 olefile==0.46
 paramiko==2.6.0
+pbr==5.9.0
 pexpect==4.6.0
 Pillow==7.0.0
 protobuf==3.6.1
@@ -64,6 +66,7 @@ SecretStorage==2.3.1
 simplejson==3.16.0
 six==1.14.0
 systemd-python==234
+testresources==2.0.1
 ubuntu-advantage-tools==27.7
 ubuntu-drivers-common==0.0.0
 ufw==0.36
