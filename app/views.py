@@ -125,3 +125,15 @@ def update_pitch(pitch_id):
         form.content.data = pitch.content
 
     return render_template('create_pitch.html', title='Update Pitch', form=form, legend = 'Update Pitch')    
+
+
+@app.route("/pitch/<int:pitch_id>/delete", methods=['POST'] )
+@login_required
+def delete_pitch(pitch_id):
+    pitch = Pitch.query.get_or_404(pitch_id)
+    if pitch.author != current_user:
+        abort(403)
+    db.session.delete(pitch)
+    db.session.commit()
+    flash('Your pitch has been deleted', 'success')
+    return redirect(url_for('home'))
