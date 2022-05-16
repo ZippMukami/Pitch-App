@@ -1,4 +1,6 @@
+from email.mime import image
 from encodings import utf_8
+from fileinput import filename
 from flask import render_template, url_for, flash, redirect, request
 from app import app, db, bcrypt
 from app.forms import RegistrationForm, LoginForm
@@ -72,4 +74,5 @@ def logout():
 @app.route("/account")
 @login_required
 def account():  
-    return render_template('account.html', title ='Account')    
+    image_file = url_for('static', filename='default_dp/' + current_user.image_file)
+    return render_template('account.html', title ='Account', image_file = image_file)    
